@@ -9,7 +9,7 @@ port = $PORT\n
 primaryColor='##0b8f6a' \n
 backgroundColor='#FFFFFF' \n
 secondaryBackgroundColor='#F0F2F6' \n
-textColor='#0b8f6a' \n
+textColor='white' \n
 font='sans serif' \n
 " > ~/.streamlit/config.toml
 

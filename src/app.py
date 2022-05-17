@@ -7,6 +7,17 @@ from streamlit.server.server import Server
 st.set_page_config(
     page_title="(E)Bike-Counter", page_icon=Image.open("assets/favicon.png"), layout="centered", initial_sidebar_state="auto", menu_items=None)
 
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #0b8f6a;
+    color: white;
+    width: 100px;
+    height: 50px;
+
+}
+</style>""", unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -30,7 +41,7 @@ if bike_btn: # TODO Tornado call
         f.write(f"{bike}")
 
 with col1:
-    bike_element = '<h1 style="font-family:Courier; color:black; font-size: 8em;">{}</h1>'.format(bike)
+    bike_element = '<h1 style="font-family:Courier; color:black; font-size: 6em;">{}</h1>'.format(bike)
     st.markdown(bike_element, unsafe_allow_html=True)
 
 if ebike_btn: # TODO Tornado call
@@ -40,7 +51,7 @@ if ebike_btn: # TODO Tornado call
         f.write(f"{ebike}")
 
 with col2:
-    ebike_element = '<h1 style="font-family:Courier; color:black; font-size: 8em;">{}</h1>'.format(ebike)
+    ebike_element = '<h1 style="font-family:Courier; color:black; font-size: 6em;">{}</h1>'.format(ebike)
     st.markdown(ebike_element, unsafe_allow_html=True)
 
 st.balloons()
