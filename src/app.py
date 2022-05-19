@@ -21,10 +21,12 @@ div.stButton > button:first-child {
 col1, col2 = st.columns(2)
 
 with col1:
-    bike_btn = st.button("Bike me", key='bike')
+    bike_btn = st.button("Fahrrad", key='bike')
 
 with col2:
-    ebike_btn = st.button("Ebike me",  key="ebike")
+    ebike_btn = st.button("Ebike",  key="ebike")
+
+clear_btn = st.button("Clear 0",  key="clear")
 
 with open("bike.txt", "r") as f:
     bike = f.readline()  # starts as a string
@@ -40,15 +42,25 @@ if bike_btn: # TODO Tornado call
         f.truncate()
         f.write(f"{bike}")
 
-with col1:
-    bike_element = '<h1 style="font-family:Courier; color:black; font-size: 6em;">{}</h1>'.format(bike)
-    st.markdown(bike_element, unsafe_allow_html=True)
-
 if ebike_btn: # TODO Tornado call
     ebike += 1  
     with open("ebike.txt", "w") as f:
         f.truncate()
         f.write(f"{ebike}")
+
+if clear_btn:
+    ebike=0
+    bike=0
+    with open("ebike.txt", "w") as f:
+        f.truncate()
+        f.write(f"0")
+    with open("bike.txt", "w") as f:
+        f.truncate()
+        f.write(f"0")
+
+with col1:
+    bike_element = '<h1 style="font-family:Courier; color:black; font-size: 6em;">{}</h1>'.format(bike)
+    st.markdown(bike_element, unsafe_allow_html=True)
 
 with col2:
     ebike_element = '<h1 style="font-family:Courier; color:black; font-size: 6em;">{}</h1>'.format(ebike)
